@@ -95,6 +95,12 @@ let Command = "breakpoint modify" in {
   def breakpoint_modify_condition : Option<"condition", "c">, Group<1>,
     Arg<"Expression">, Desc<"The breakpoint stops only if this condition "
     "expression evaluates to true.">;
+  def breakpoint_modify_condition_language
+      : Option<"condition-language", "Y">,
+        Group<1>,
+        Arg<"Language">,
+        Desc<"Specifies the Language to use when executing the breakpoint's "
+             "condition expression.">;
   def breakpoint_modify_auto_continue : Option<"auto-continue", "G">, Group<1>,
     Arg<"Boolean">,
     Desc<"The breakpoint will auto-continue after running its commands.">;
@@ -355,6 +361,8 @@ let Command = "disassemble" in {
     Desc<"Disassemble function containing this address.">;
   def disassemble_options_force : Option<"force", "\\x01">, Groups<[2,3,4,5,7]>,
     Desc<"Force disassembly of large functions.">;
+  def disassemble_options_rich : Option<"rich", "R">,
+    Desc<"Enable rich disassembly annotations for this invocation.">;
 }
 
 let Command = "diagnostics dump" in {
